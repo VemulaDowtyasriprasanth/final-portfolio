@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prasanth Dowtya's Portfolio</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #121212;
+            color: #ddd;
+        }
+      
+    /* Reset default margins and padding */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    /* Utility Classes */
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .section-padding {
+            padding: 40px 0;
+        }
+        .bg-dark {
+            background: #333;
+        }
+        .bg-light {
+            background: #f4f4f4;
+            color: #333;
+        }
+        .text-center {
+            text-align: center;
+        }
+
+        /* Work and Teaching/Research Experience Styles */
+        .experience-section {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #1c1c1c;
+            border-left: 4px solid #3498db; /* Accent border */
+            border-radius: 4px;
+        }
+
+        .experience-section h2 {
+            color: #3498db; /* Accent color */
+            margin-bottom: 20px;
+        }
+
+        .experience {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #444; /* Subtle separation */
+        }
+
+        .experience:last-child {
+            border-bottom: 0; /* Remove border from the last child */
+        }
+
+        .experience h3 {
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+
+        .experience p {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .experience ul {
+            list-style: inside square; /* Stylish list item */
+        }
+
+        .experience ul li {
+            margin-bottom: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            .experience h3 {
+                font-size: 1.1rem;
+            }
+        }
+
+    /* Set background color, text color, and a shadow for the navbar */
+    .navbar {
+        background-color: #0f040e; /* Dark blue shade */
+        color: white;
+        box-shadow: 0 2px 5px rgba(0,0,0,.2);
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    /* Add some padding and change font styling for the title */
+    .navbar-title {
+        padding: 1rem 2rem;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #ecf0f1; /* Light grey color for contrast */
+    }
+
+    /* Style for the navigation links */
+    .navbar-links {
+        list-style: none;
+        float: right;
+        margin-right: 2rem;
+    }
+
+    .navbar-links li {
+        display: inline-block;
+        padding: 1rem 1rem;
+    }
+
+    .navbar-links a {
+        text-decoration: none;
+        color: #ecf0f1;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    /* Change link color on hover */
+    .navbar-links a:hover {
+        color: #00ff22; /* Light blue for hover effect */
+    }
+
+    /* Responsive Navbar */
+    @media (max-width: 768px) {
+        .navbar-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #2c3e50;
+            position: absolute;
+            width: 100%;
+            top: 60px;
+            left: -100%;
+            transition: left 0.3s;
+        }
+
+        .navbar-links.active {
+            left: 0;
+        }
+
+        .navbar-links li {
+            padding: 15px 0;
+        }
+
+        .navbar-title {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+    }
+    #projects {
+        background-color: #222; /* Dark background for better contrast */
+        padding: 2rem;
+        border-radius: 10px;
+        margin-top: 2rem;
+    }
+
+    #projects h2 {
+        text-align: center;
+        color: #4CAF50; /* Bright accent color */
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+    }
+
+    .project {
+        background-color: #333; /* Slightly lighter background for each project card */
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+    }
+
+    .project:last-child {
+        margin-bottom: 0; /* Remove bottom margin from the last project */
+    }
+
+    .project h3 {
+        color: #fff; /* White color for headings */
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+    }
+
+    .project p {
+        color: #bbb; /* Light grey color for text for readability */
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .project a {
+        color: #4CAF50; /* Accent color for links */
+        text-decoration: none; /* No underline */
+        font-weight: bold;
+        transition: color 0.3s ease; /* Smooth transition for color change */
+    }
+
+    .project a:hover {
+        color: #66ff66; /* Lighter shade for hover state */
+    }
+
+    .project strong {
+        color: #fff; /* White color for strong emphasis */
+    }
+
+    /* Hover Effects for Project Cards */
+    .project:hover {
+        transform: translateY(-5px); /* Slight lift */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        #projects {
+            padding: 1rem;
+        }
+
+        .project {
+            padding: 1rem;
+        }
+
+        #projects h2 {
+            font-size: 2rem;
+        }
+
+        .project h3 {
+            font-size: 1.5rem;
+        }
+    }
+
+       
+    
+    .hero {
+        background: #121212; /* Dark background for contrast */
+        color: #ffffff;
+        padding: 50px 0;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh; /* Adjust the height as needed or remove if not required */
+        padding: 50px 0;
+        background: #121212; 
+    }
+
+    .hero h1 {
+        font-size: 3.5rem; /* Large, attention-grabbing size */
+        color: #0adb76; /* Bright, brand-specific accent color */
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
+        margin-bottom: 1rem;
+        z-index: 2
+    }
+
+    .hero .tagline {
+        font-size: 1.5rem;
+        color: #dcdcdc;
+        max-width: 600px;
+        margin: auto; /* Centering the tagline */
+        margin-bottom: 2rem;
+        z-index: 2;
+    }
+
+    .hero-image img {
+        border: 5px solid #0adb76; /* Accent border color */
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6); /* Shadow for a 'lifted' effect */
+        transition: all 0.3s ease-in-out;
+        z-index: 2;
+    }
+
+    .hero-image:hover img {
+        transform: scale(1.1); /* Slight zoom effect on hover */
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.75); /* Increased shadow for lift effect */
+    }
+
+    /* Media query for responsive design */
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+        }
+
+        .hero-image img {
+            width: 150px;
+            height: 150px;
+        }
+    }
+
+
+     
+        /* About Me Section Styling */
+        .about {
+            background-color: #343a40; /* Dark background for the section */
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: -4rem; /* To overlap hero section */
+            z-index: 10;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,.2); /* Add shadow for depth */
+        }
+
+        .about h2 {
+            color: #f8f9fa;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .about p {
+            color: #dee2e6;
+            line-height: 1.6;
+        }
+
+        /* Ensure the container has padding from the edges */
+        .container {
+            padding: 0 15px;
+            max-width: 1200px; /* Set max width for the container */
+            margin: 0 auto; /* Center the container */
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2rem 0;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+            .about {
+                margin-top: 0;
+                padding: 1rem;
+            }
+        }
+
+
+        /* Additional styling... */
+        #academic-achievements {
+        background-color: #2d2d2d; /* Dark background for the section */
+        color: #ffffff;
+        padding: 2rem;
+        margin: 2rem 0;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    }
+
+    #academic-achievements h2 {
+        text-align: center;
+        color: #4caf50; /* Bright accent color */
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    #academic-achievements ul {
+        list-style-type: none; /* Remove default list styling */
+        padding: 0;
+    }
+
+    #academic-achievements li {
+        background-color: #383838; /* Slightly lighter background for list items */
+        padding: 0.5rem 1rem;
+        margin-bottom: 0.5rem;
+        border-radius: 4px;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    #academic-achievements li:hover {
+        background-color: #4caf50; /* Highlight list item on hover */
+        color: #0a0a0a;
+        cursor: default;
+    }
+
+    /* Responsive design adjustments */
+    @media (max-width: 768px) {
+        #academic-achievements {
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        #academic-achievements h2 {
+            font-size: 1.8rem;
+        }
+    }
+    #youtube-videos {
+        background-color: #282828; /* Dark background for the section */
+        color: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        margin-top: 2rem;
+    }
+
+    #youtube-videos h2 {
+        text-align: center;
+        color: #e74c3c; /* Bright accent color for the section heading */
+        margin-bottom: 2rem;
+        font-size: 2.2rem;
+    }
+
+    .video {
+        margin-bottom: 1.5rem;
+        background-color: #1e1e1e; /* Slightly lighter background for the video container */
+        padding: 1rem;
+        border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video:last-child {
+        margin-bottom: 0; /* Remove margin from the last video for spacing */
+    }
+
+    .video h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #fff;
+    }
+
+    .video h3 a {
+        color: #e74c3c; /* Color for video links */
+        text-decoration: none; /* Remove underline from links */
+        transition: color 0.2s ease-in-out;
+    }
+
+    .video h3 a:hover {
+        color: #f1c40f; /* Color change on hover */
+    }
+
+    .video iframe {
+        max-width: 100%; /* Ensure the iframe is responsive and fits its container */
+        border-radius: 8px; /* Rounded corners for the iframe */
+    }
+
+    /* Hover Effects for Video Containers */
+    .video:hover {
+        transform: translateY(-5px); /* Slight lift on hover */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        #youtube-videos {
+            padding: 1rem;
+        }
+
+        .video h3 {
+            font-size: 1.2rem;
+        }
+    }
+            
+        footer {
+            background-color: #333; /* Footer background */
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        #connect {
+            margin: auto;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        #connect h2 {
+            margin-bottom: 1rem;
+            color: #4CAF50; /* Bright color for the heading */
+        }
+
+        #contact-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        #contact-form input[type=text],
+        #contact-form input[type=email],
+        #contact-form input[type=submit] {
+            /* padding: 0.5rem;
+            margin-bottom: 1rem; */
+            /* border: none;
+            border-radius: 5px; */
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        #contact-form input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #contact-form input[type=submit]:hover {
+            background-color: #367C36; /* Darker shade on hover */
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-title">Prasanth Dowtya</div>
+            <ul class="navbar-links">
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#work-experience">Work Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#academic-achievements">Academic Achievements</a></li>
+                <li><a href="#hobbies">Hobbies</a></li>
+                <li><a href="#youtube-videos">Videos</a></li>
+                <li><a href="#connect">Connect</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h1>Turning ideas into impactful digital solutions.</h1>
+            <p class="tagline">Turning ambitious visions into powerful, data-driven solutions that redefine boundaries and elevate innovation.</p>
+            <div class="hero-image">
+                <!-- Image of Prasanth Dowtya goes here -->
+                <img src="profilepic.jpg" alt="Prasanth Dowtya" class="hero-image" >
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- About Me -->
+        <section id="about" class="about">
+            <h2>About Me</h2>
+            <p>I am an aspiring AI Engineer, currently nearing the completion of my Master's degree in Artificial Intelligence from the University of North Texas. My academic journey has been driven by a strong passion for understanding and leveraging the transformative power of AI. With a solid foundation in computer science from my undergraduate studies at Amrita Vishwa Vidyapeetham, I have honed my skills in various aspects of AI and machine learning.</p>
+            
+            <p>My expertise lies in designing and implementing advanced AI solutions, with a particular focus on machine learning, data analysis, and cloud computing. Through my projects, like the LLaMA 2 Chatbot and the Multi-Cloud Architecture for COVID-19 Testing Status, I have demonstrated my ability to apply theoretical knowledge to practical, real-world problems. I am particularly interested in how AI can be used to drive innovation and efficiency in different industries, especially in healthcare and data management.</p>
+        
+            <p>As I embark on my professional journey, I am eager to contribute to forward-thinking companies where I can apply my skills in AI. My goal is to be at the forefront of AI research and development, continually learning and growing in this ever-evolving field. I am committed to using my knowledge to solve complex problems, drive business value, and make a positive impact on society through technology.</p>
+        </section>
+        <div class="container section-padding">
+            <section id="work-experience" class="experience-section bg-dark">
+                <h2 class="text-center">Work Experience</h2>
+                <!-- Your Work Experience Content -->
+                <div class="experience">
+                    <h3>AI Engineer - Amity Tech Corporation</h3>
+                    <p><strong>September 2023 - Present, Frisco, Texas</strong></p>
+                    <ul>
+                        <li>Developed an AI-driven chatbot using OpenAI's GPT-3.5 language model, Langchain, and Streamlit.</li>
+                        <li>Deployed chatbot application on Hugging Face, enhancing client support operations with immediate, accurate responses.</li>
+                    </ul>
+                </div>
+                <div class="experience">
+                    <h3>Site Reliability Engineer - Honeywell</h3>
+                    <p><strong>January 2022 - July 2022, Bangalore, India</strong></p>
+                    <ul>
+                        <li>Managed onboarding applications for Kong and Grafana Dashboard, ensuring smooth deployment using DevOps methodologies.</li>
+                        <li>Developed a self-service portal integrating Jira, Azure User Authentication, and SendGrid mail systems.</li>
+                    </ul>
+                </div>
+                <div class="experience">
+                    <h3>Software Developer - Ninja Cart</h3>
+                    <p><strong>July 2022 - August 2022, Bangalore, India</strong></p>
+                    <ul>
+                        <li>Collaborated in a cross-functional team to develop, test, and troubleshoot software issues, focusing on API integration.</li>
+                        <li>Engaged in code reviews, offering feedback and maintaining communication for efficient project progression.</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="teaching-research-experience" class="experience-section bg-dark">
+                <h2 class="text-center">Teaching and Research Experience</h2>
+                <!-- Your Teaching and Research Experience Content -->
+                <div class="experience">
+                    <h3>CAP Statistics Tutor - University of North Texas</h3>
+                    <p><strong>August 2023 - September 2023</strong></p>
+                    <ul>
+                        <li>Provided personalized tutoring to over 200 students in statistics and probability concepts.</li>
+                    </ul>
+                </div>
+            
+                <!-- Graduate Research Assistant -->
+                <div class="experience">
+                    <h3>Graduate Research Assistant - University of North Texas</h3>
+                    <p><strong>January 2023 - August 2023</strong></p>
+                    <ul>
+                        <li>Led a project on “Comprehensive Dataset Utilizing Meteorological and Topographical Features for Next-Day Wildfire Spread Prediction”.</li>
+                        <li>Ensured timely delivery and adherence to quality standards.</li>
+                    </ul>
+                </div>
+            
+                <!-- Previous Graduate Research Assistant Role -->
+                <div class="experience">
+                    <p><strong>August 2022 - January 2023</strong></p>
+                    <ul>
+                        <li>Utilized Python and Deep Learning for Remote Sensing in Geo-spatial lab to process satellite images from USGS Earth Explorer.</li>
+                        <li>Applied ML models for county classification using various libraries on Ubuntu 20.04.4 LTS and QGIS.</li>
+                    </ul>
+                </div>
+            
+                <!-- Undergraduate Teaching Assistant Roles -->
+                <div class="experience">
+                    <h3>Undergraduate Teaching Assistant - Amrita Vishwa Vidyapeetham</h3>
+                    <p><strong>February 2020 - December 2021</strong></p>
+                    <ul>
+                        <li>Taught Data Structures and Algorithms, Design and Analysis of Algorithms Courses.</li>
+                    </ul>
+                    <p><strong>February 2019 - June 2019</strong></p>
+                    <ul>
+                        <li>Taught C Programming & Python for juniors and managed Computer Labs.</li>
+                    </ul>
+                    <p><strong>June 2018 - January 2019</strong></p>
+                    <ul>
+                        <li>Taught "Computational Thinking and Problem Solving" to high school students.</li>
+                        <li>Introduced foundational programming skills using Scratch and Flogarithm.</li>
+                        <li>Collaborated with faculty to develop engaging lesson plans and activities.</li>
+                    </ul>
+                </div>
+            
+            </section>
+        </div>   
+        
+        <!-- Projects -->
+    
+        <section id="projects" class="projects">
+            <h2>Projects</h2>
+        
+            <!-- AI Chatbot Application with Streamlit and LangChain -->
+            <div class="project">
+                <h3>AI Chatbot Application with Streamlit and LangChain</h3>
+                <p>Developed a web-based AI chatbot using Streamlit and LangChain, integrating Hugging Face's ChatOpenAI model. It offers interactive, AI-driven conversations, and showcases how AI can be integrated into user-friendly web applications.</p>
+                <p><strong>Skills:</strong> Python Programming, Natural Language Processing with LangChain, Integration of Hugging Face's AI Models, User Interface Design, Streamlit</p>
+                <p><a href="https://github.com/VemulaDowtyasriprasanth/Chatapp-using-Huggingface" target="_blank">GitHub Repository</a></p>
+            </div>
+        
+            <!-- Building CustomGPT using Chroma DB and AI-Powered Text Search and Analysis System -->
+            <div class="project">
+                <h3>Building CustomGPT using Chroma DB and AI-Powered Text Search and Analysis System</h3>
+                <p>This project involves developing an advanced search and question-answering system using LangChain and OpenAI's GPT models, with Chroma DB for vector storage.</p>
+                <p><strong>Skills:</strong> CustomGPT, Chromadb, Vector, ChatGPT, AI Solutions, NLP, Machine Learning, Deep Learning, OpenAI</p>
+                <p><a href="https://github.com/VemulaDowtyasriprasanth/Building-ChatGPT-with-Own-Data-" target="_blank">GitHub Repository</a></p>
+            </div>
+        
+            <!-- Deep Learning for Image Classification: MNIST & ASL Datasets -->
+            <div class="project">
+                <h3>Deep Learning for Image Classification: MNIST & ASL Datasets</h3>
+                <p>This project focuses on image classification using MNIST and ASL datasets, covering neural network basics and advancing to CNNs for improved accuracy.</p>
+                <p><strong>Skills:</strong> Deep Learning, TensorFlow, Keras, Data Preprocessing, Model Building, Augmentation Techniques</p>
+                <p><a href="https://github.com/VemulaDowtyasriprasanth/-Deep-Learning-for-Image-Classification-MNIST-ASL-Datasets" target="_blank">GitHub Repository</a></p>
+            </div>
+        
+            <!-- Additional projects can be added here -->
+        </section>
+        
+
+        <!-- Academic Achievements -->
+        <section id="academic-achievements" class="academic-achievements">
+            <h2>Academic Achievements</h2>
+            <ul>
+                <li>GRE Score: 318/340</li>
+                <li>Kwest Maths Olympiad: Ranked 2nd in State</li>
+                <li>AP Polycet Exam: Achieved 6th position in State</li>
+                <li>APRJC Exam: Secured 9th position in State</li>
+                <li>EAMCET Exam: Secured 95 Rank in State</li>
+                <li>Completed Master’s in AI in 1.5 years with top grades</li>
+                <!-- More achievements -->
+            </ul>
+        </section>
+
+        <!-- Hobbies and Volunteering -->
+        <section id="hobbies" class="hobbies">
+            <h2>Hobbies and Volunteering</h2>
+            <p>Teaching AP Computer Science and Mathematics to students. Passionate about sharing knowledge and fostering learning.</p>
+        </section>
+
+        <!-- YouTube Videos -->
+     
+        <section id="youtube-videos" class="youtube-videos">
+            <h2>My YouTube Videos</h2>
+        
+            <!-- Build Simple Question & Answer LLM App -->
+            <div class="video">
+                <h3><a href="https://www.youtube.com/watch?v=zZIg_onhw7w" target="_blank">Build Simple Question & Answer LLM App using Langchain, Streamlit, OpenAI & Deploy App on Hugging Face</a></h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/zZIg_onhw7w" frameborder="0" allowfullscreen></iframe>
+            </div>
+        
+            <!-- Creating First DAG in Airflow -->
+            <div class="video">
+                <h3><a href="https://www.youtube.com/watch?v=G8YfDu7f-3I" target="_blank">Creating First DAG in Airflow</a></h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/G8YfDu7f-3I" frameborder="0" allowfullscreen></iframe>
+            </div>
+        
+            <!-- The Complete Basics of Airflow -->
+            <div class="video">
+                <h3><a href="https://www.youtube.com/watch?v=RhO_ERrksBs" target="_blank">The Complete Basics of Airflow</a></h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/RhO_ERrksBs" frameborder="0" allowfullscreen></iframe>
+            </div>
+        
+            <!-- Additional videos can be added in a similar format -->
+        
+        </section>
+        
+        <!-- Connect -->
+
+        <footer>
+            <div id="connect">
+                <h2>Connect with Me</h2>
+                <form id="contact-form" onsubmit="event.preventDefault(); formSubmitted();">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <select id="reason" name="reason" required>
+                        <option value="">--Please choose an option--</option>
+                        <option value="project">Project Requirement</option>
+                        <option value="job">Job Opportunity</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+                    <input type="submit" value="Send">
+                </form>
+                <p id="success-message" style="display:none;">Thank you, your message has been sent!</p>
+            </div>
+        </footer>
+        <script>
+            function formSubmitted() {
+                // Hide the form
+                document.getElementById('contact-form').style.display = 'none';
+                // Show the success message
+                document.getElementById('success-message').style.display = 'block';
+            }
+        </script>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
